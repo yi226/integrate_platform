@@ -71,6 +71,7 @@ class IntegratePlatform {
 
   static Future<FileResult> writeFile(String content, String name,
       {bool recursive = false, bool autoRename = false, String? path}) async {
+    assert(name.split('.').length == 2);
     int index = 0;
     String filePath = path ?? (await _getCurrentDirectory());
     String fileType = name.split('.').last;
