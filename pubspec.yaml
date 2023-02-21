@@ -1,6 +1,6 @@
 name: integrate_platform
-description: Cross-platform [Platform] and File Management.
-version: 1.0.0
+description: Cross-platform [Platform] and File Management Just use [IntegratePlatform].
+version: 1.0.1
 homepage: https://github.com/yi226/integrate_platform
 
 environment:
