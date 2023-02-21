@@ -1,3 +1,6 @@
-## 0.0.1
+## 1.0.0
 
-* TODO: Describe initial release.
+- Initial publishing.
+- Use `IntegratePlatform` instead of `Platform` to get platform information in io and web.
+- Packaged path_provider (In web, you'll get null).
+- Packaged File Management. You can read and write a file in io and web.

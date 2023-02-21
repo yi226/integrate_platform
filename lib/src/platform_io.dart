@@ -40,10 +40,17 @@ class IntegratePlatform {
   /// [iOS](https://en.wikipedia.org/wiki/IOS).
   static bool get isIOS => Platform.isIOS;
 
+  /// Whether the operating system is desktop.
   static bool get isDesktop =>
       Platform.isLinux || Platform.isWindows || Platform.isMacOS;
+
+  /// Whether the operating system is mobile.
   static bool get isMobile => Platform.isAndroid || Platform.isIOS;
+
+  /// Whether the operating system is web.
   static bool get isWeb => false;
+
+  /// The path separator used by the operating system to separate components in file paths.
   static String get pathSeparator => Platform.pathSeparator;
 
   static Future<String> _getCurrentDirectory() async {
@@ -57,18 +64,46 @@ class IntegratePlatform {
     return path;
   }
 
+  /// Get the current directory path.
+  ///
+  /// Desktop: [Directory].current.path
+  ///
+  /// Mobile: Application documents directory
+  ///
+  /// Web: null
   static Future<String?> getCurrentDirectory() => _getCurrentDirectory();
 
+  /// Get the application documents directory path.
+  ///
+  /// IO: https://github.com/flutter/plugins/tree/main/packages/path_provider/path_provider
+  ///
+  /// Web: null
   static Future<String?> getApplicationDocumentsDirectory() async {
     Directory appDocDir = await provider.getApplicationDocumentsDirectory();
     return appDocDir.path;
   }
 
+  /// Get the temporary documents directory path.
+  ///
+  /// IO: https://github.com/flutter/plugins/tree/main/packages/path_provider/path_provider
+  ///
+  /// Web: null
   static Future<String?> getTemporaryDirectory() async {
     Directory appDocDir = await provider.getTemporaryDirectory();
     return appDocDir.path;
   }
 
+  /// Write content to a file
+  ///
+  /// [name] needs to be suffixed, such as "hello.txt"
+  ///
+  /// If [recursive] is false, the default, the file is created only if all directories in its path already exist. If [recursive] is true, any non-existing parent paths are created first.
+  ///
+  /// If [autoRename] is false, the default, the file name will not change.If [autoRename] is true, the name will be added number to avoid duplication.
+  ///
+  /// If [path] is null, the default path is current path [getCurrentDirectory].
+  ///
+  /// The named parameters will not take effect in Web.Instead, users will get the file by automatic download.
   static Future<FileResult> writeFile(String content, String name,
       {bool recursive = false, bool autoRename = false, String? path}) async {
     assert(name.split('.').length == 2);
@@ -95,6 +130,11 @@ class IntegratePlatform {
     return FileResult(success: true, path: fileWholeName);
   }
 
+  /// Pick a single file.
+  ///
+  /// IO: https://github.com/miguelpruivo/flutter_file_picker
+  ///
+  /// Web: null
   static Future<String?> pickSingleFile({
     FileType fileType = FileType.any,
     List<String>? allowedExtensions,
@@ -109,6 +149,15 @@ class IntegratePlatform {
     }
   }
 
+  /// Read a File
+  ///
+  /// If [path] is null, the path will be picked by users using [pickSingleFile].
+  ///
+  /// The [path] will not take effect in Web.
+  ///
+  /// [contentType] determines the result type to be [String] or [Uint8List].
+  ///
+  /// Users will get [String] or [Uint8List] in io and [Uint8List] in web.
   static Future<FileResult> readFile({
     String? path,
     ContentType contentType = ContentType.string,
@@ -141,6 +190,11 @@ class IntegratePlatform {
     }
   }
 
+  /// Get [ui.Image] in 'dart:ui' by the given path.
+  ///
+  /// If [path] is null, the path will be picked by users using [pickSingleFile].
+  ///
+  /// The [path] will not take effect in Web.
   static Future<ui.Image?> getImage(String? path) async {
     String? filePath = path ?? (await pickSingleFile(fileType: FileType.image));
     if (filePath == null) {
@@ -159,6 +213,7 @@ enum ContentType {
 }
 
 class FileResult {
+  /// The result of operation on file.
   FileResult({
     required this.success,
     this.path,
@@ -166,10 +221,22 @@ class FileResult {
     this.bytes,
     this.errorMessage,
   });
+
+  /// Indicates whether the file operation was successful.
   bool success;
+
+  /// The full path to the final file.
   String? path;
+
+  /// The Content of the file in [String].
   String? content;
+
+  /// The Content of the file in [Uint8List].
   Uint8List? bytes;
+
+  /// Information about the reason for the failure.
   String? errorMessage;
+
+  /// Information about the operation.
   String get message => success ? 'success' : errorMessage ?? 'error';
 }

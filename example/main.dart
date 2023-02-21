@@ -28,19 +28,25 @@ class HomePage extends StatefulWidget {
 
 class _HomePageState extends State<HomePage> {
   String data = 'None';
+  String path = '';
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(title: Text(IntegratePlatform.operatingSystemVersion)),
       body: Column(
+        mainAxisAlignment: MainAxisAlignment.spaceAround,
         children: [
           Text(data),
           ElevatedButton(
             child: const Text("Write to File"),
             onPressed: () async {
-              await IntegratePlatform.writeFile("hello world", "hello.txt");
+              final result =
+                  await IntegratePlatform.writeFile("hello world", "hello.txt");
+              path = result.path.toString();
+              setState(() {});
             },
           ),
+          Text(path),
           ElevatedButton(
             child: const Text("Read a File"),
             onPressed: () async {

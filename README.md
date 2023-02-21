@@ -40,16 +40,26 @@ bool isDesktop = IntegratePlatform.isDesktop
 
 - Get path in need
 ```dart
-
+String? path = IntegratePlatform.getCurrentDirectory()
 ```
 
 - Write and Read file
 ```dart
+// Read file
+final result = await IntegratePlatform.readFile();
+if (result.success) {
+    data = result.content.toString();
+}
 
+// Write file
+final result =
+    await IntegratePlatform.writeFile("hello world", "hello.txt");
+path = result.path.toString();
 ```
 
 The whole examples are in `/example` folder.
 
+![example](./pic/example.png)
 
 ## Additional information
 
