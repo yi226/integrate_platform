@@ -1,7 +1,7 @@
 name: integrate_platform
 description: Cross-platform [Platform] and File Management.
 version: 1.0.0
-homepage:
+homepage: https://github.com/yi226/integrate_platform
 
 environment:
   sdk: '>=2.19.2 <3.0.0'
