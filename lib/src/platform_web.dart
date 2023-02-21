@@ -42,7 +42,7 @@ class IntegratePlatform {
 
   static Future<FileResult> writeFile(String content, String name,
       {bool recursive = false, bool autoRename = false, String? path}) async {
-    assert(name.split('.').length != 2);
+    assert(name.split('.').length == 2);
     _download(content: content, fileName: name);
     return FileResult(success: true);
   }

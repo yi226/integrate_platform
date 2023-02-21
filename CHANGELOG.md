@@ -1,3 +1,6 @@
+## 1.0.2
+- fix bug for writeFile in web
+
 ## 1.0.1
 - Update description.
 

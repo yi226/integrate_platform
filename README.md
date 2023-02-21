@@ -24,7 +24,7 @@ Cross-platform [Platform] and File Management.
 To use this plugin, add `integrate_platform` as a dependency in your pubspec.yaml file.
 ```dart
 dependencies:
-  integrate_platform: ^1.0.0
+  integrate_platform: ^1.0.2
 ```
 
 ## Usage
