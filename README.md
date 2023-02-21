@@ -53,6 +53,7 @@ The whole examples are in `/example` folder.
 
 ## Additional information
 
-TODO: Tell users more about the package: where to find more information, how to
-contribute to the package, how to file issues, what response they can expect
-from the package authors, and more.
+Thanks to:
+- [path_provider](https://github.com/flutter/plugins/tree/main/packages/path_provider/path_provider)
+
+- [file_picker](https://github.com/miguelpruivo/flutter_file_picker)
