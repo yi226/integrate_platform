@@ -1,6 +1,6 @@
 name: integrate_platform
-description: A new Flutter package project.
-version: 0.0.1
+description: Cross-platform [Platform] and File Management.
+version: 1.0.0
 homepage:
 
 environment:

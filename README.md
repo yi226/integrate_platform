@@ -11,26 +11,45 @@ and the Flutter guide for
 [developing packages and plugins](https://flutter.dev/developing-packages).
 -->
 
-TODO: Put a short description of the package here that helps potential users
-know whether this package might be useful for them.
+Cross-platform [Platform] and File Management.
 
 ## Features
 
-TODO: List what your package can do. Maybe include images, gifs, or videos.
+- Use `IntegratePlatform` instead of `Platform` to get platform information in io and web.
+- Packaged path_provider (In web, you'll get null).
+- Packaged File Management. You can read and write a file in io and web.
 
 ## Getting started
 
-TODO: List prerequisites and provide or point to information on how to
-start using the package.
+To use this plugin, add `integrate_platform` as a dependency in your pubspec.yaml file.
+```dart
+dependencies:
+  integrate_platform: ^1.0.0
+```
 
 ## Usage
-
-TODO: Include short and useful examples for package users. Add longer examples
-to `/example` folder.
-
+ 
+- Get platform information
 ```dart
-const like = 'sample';
+// Get system version
+bool operatingSystemVersion = IntegratePlatform.operatingSystemVersion;
+
+// Get platform type
+bool isDesktop = IntegratePlatform.isDesktop
 ```
+
+- Get path in need
+```dart
+
+```
+
+- Write and Read file
+```dart
+
+```
+
+The whole examples are in `/example` folder.
+
 
 ## Additional information
 

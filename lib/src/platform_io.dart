@@ -109,8 +109,8 @@ class IntegratePlatform {
     }
   }
 
-  static Future<FileResult> readFile(
-    String? path, {
+  static Future<FileResult> readFile({
+    String? path,
     ContentType contentType = ContentType.string,
     FileType fileType = FileType.any,
     List<String>? allowedExtensions,
