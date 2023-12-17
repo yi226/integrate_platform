@@ -1,17 +1,17 @@
 name: integrate_platform
 description: Cross-platform [Platform] and File Management Just use [IntegratePlatform].
-version: 1.0.2
+version: 1.1.0
 homepage: https://github.com/yi226/integrate_platform
 
 environment:
-  sdk: '>=2.19.2 <3.0.0'
-  flutter: ">=1.17.0"
+  sdk: '>=3.2.2 <4.0.0'
+  flutter: ">=3.7.0"
 
 dependencies:
   flutter:
     sdk: flutter
-  file_picker: ^5.2.5
-  path_provider: ^2.0.12
+  file_picker: ^6.1.1
+  path_provider: ^2.1.1
 
 dev_dependencies:
   flutter_test:
